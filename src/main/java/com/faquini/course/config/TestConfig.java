@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.faquini.course.entities.Category;
 import com.faquini.course.entities.Order;
 import com.faquini.course.entities.OrderItem;
+import com.faquini.course.entities.Payment;
 import com.faquini.course.entities.Product;
 import com.faquini.course.entities.User;
 import com.faquini.course.entities.enumerates.OrderStatus;
@@ -81,6 +82,10 @@ public class TestConfig implements CommandLineRunner{
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice()); 
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+		Payment pay1 = new Payment(null, Instant.parse("2019-07-21T06:42:10Z"), o2);
+		o2.setPayment(pay1);
+		
+		orderRepository.save(o2);
 		
 	} 
 
